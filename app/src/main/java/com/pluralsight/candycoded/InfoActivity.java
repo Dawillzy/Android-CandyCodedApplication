@@ -11,6 +11,8 @@ import com.squareup.picasso.Picasso;
 
 public class InfoActivity extends AppCompatActivity {
 
+    private Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class InfoActivity extends AppCompatActivity {
 
     // ***
     public void createMapIntent(View view) {
-        Uri uri = Uri.parse("geo:0,0?q=618 E South St Orlando, FL 32801");
+      uri = Uri.parse("geo:0,0?q=618 E South St Orlando, FL 32801");
 
         Intent mapItent = new Intent(Intent.ACTION_VIEW, uri);
 
@@ -37,9 +39,13 @@ public class InfoActivity extends AppCompatActivity {
              startActivity(mapItent);
          }
     }
-    // ***
 
-    // ***
-    // TODO - Task 3 - Launch the Phone Activity
-    // ***
+    public void createPhoneIntent(View view) {
+        Intent actionIntent = new Intent(Intent.ACTION_DIAL);
+
+        uri = Uri.parse("tel:0123456789");
+
+        actionIntent.setData(uri);
+        startActivity(actionIntent);
+    }
 }
